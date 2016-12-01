@@ -9,8 +9,14 @@
 
 <section id="auth-button"></section>
 
-<section id="timeline"></section>
+
+<p id="sessions-count-first"></p>
+
+<section id="sessionsBarFirst"></section>
 <section id="view-selector"></section>
+
+<section id="sessionsBarSecond"></section>
+<section id="view-selector-second"></section>
 
 <!-- Step 2: Load the library. -->
 <script type="text/javascript" src="client_id.js"></script>
@@ -41,9 +47,13 @@ gapi.analytics.ready(function() {
     container: 'view-selector'
   });
 
-  // Step 5: Create the timeline chart.
+  var viewSelectorSecond = new gapi.analytics.ViewSelector({
+    container: 'view-selector-second'
+  });
 
-  var timeline = new gapi.analytics.googleCharts.DataChart({
+  // Step 5: Create the sessionsBarFirst chart.
+
+  var sessionsBarFirst = new gapi.analytics.googleCharts.DataChart({
     reportType: 'ga',
     query: {
       'dimensions': 'ga:date',
@@ -53,19 +63,34 @@ gapi.analytics.ready(function() {
     },
     chart: {
       type: 'COLUMN',
-      container: 'timeline'
+      container: 'sessionsBarFirst'
     }
   });
 
-  timeline.on('success', function(result) {
+  var sessionsBarSecond = new gapi.analytics.googleCharts.DataChart({
+    reportType: 'ga',
+    query: {
+      'dimensions': 'ga:date',
+      'metrics': 'ga:sessions',
+      'start-date': '2016-11-01',
+      'end-date': '2016-11-30',
+    },
+    chart: {
+      type: 'COLUMN',
+      container: 'sessionsBarSecond'
+    }
+  });
+
+  sessionsBarFirst.on('success', function(result) {
     // Print the total pageview count to the console.
-    document.getElementById("data").innerHTML = result.response.totalsForAllResults['ga:sessions'];
+    document.getElementById("sessions-count-first").innerHTML = result.response.totalsForAllResults['ga:sessions'];
   });
 
   // Step 6: Hook up the components to work together.
 
   gapi.analytics.auth.on('success', function(response) {
     viewSelector.execute();
+    viewSelectorSecond.execute();
   });
 
   viewSelector.on('change', function(ids) {
@@ -74,10 +99,11 @@ gapi.analytics.ready(function() {
         ids: ids
       }
     }
-    timeline.set(newIds).execute();
+    sessionsBarFirst.set(newIds).execute();
+    sessionsBarSecond.set(newIds).execute();
   });
 });
 </script>
-<p id="data"></p>
+
 </body>
 </html>
