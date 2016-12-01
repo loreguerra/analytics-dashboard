@@ -65,7 +65,7 @@ gapi.analytics.ready(function() {
   var sessionsBarFirst = new gapi.analytics.googleCharts.DataChart({
     query: {
        'dimensions': 'ga:deviceCategory',
-       'metrics': 'ga:sessions, ga:users, ga:pageviews, ga:pageviewsPerSession'
+       'metrics': 'ga:sessions, ga:users, ga:pageviews, ga:pageviewsPerSession, ga:avgSessionDuration, ga:bounceRate, ga:newUsers'
      },
      chart: {
        type: 'TABLE',
