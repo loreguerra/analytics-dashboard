@@ -8,8 +8,9 @@
 <!-- Step 1: Create the containing elements. -->
 
 <section id="auth-button"></section>
-<section id="view-selector"></section>
+
 <section id="timeline"></section>
+<section id="view-selector"></section>
 
 <!-- Step 2: Load the library. -->
 <script type="text/javascript" src="client_id.js"></script>
@@ -47,13 +48,18 @@ gapi.analytics.ready(function() {
     query: {
       'dimensions': 'ga:date',
       'metrics': 'ga:sessions',
-      'start-date': '30daysAgo',
-      'end-date': 'yesterday',
+      'start-date': '2016-11-01',
+      'end-date': '2016-11-30',
     },
     chart: {
-      type: 'LINE',
+      type: 'COLUMN',
       container: 'timeline'
     }
+  });
+
+  timeline.on('success', function(result) {
+    // Print the total pageview count to the console.
+    document.getElementById("data").innerHTML = result.response.totalsForAllResults['ga:sessions'];
   });
 
   // Step 6: Hook up the components to work together.
@@ -72,5 +78,6 @@ gapi.analytics.ready(function() {
   });
 });
 </script>
+<p id="data"></p>
 </body>
 </html>
