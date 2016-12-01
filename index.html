@@ -16,7 +16,6 @@
 <section id="view-selector"></section>
 
 <section id="sessionsBarSecond"></section>
-<section id="view-selector-second"></section>
 
 <!-- Step 2: Load the library. -->
 <script type="text/javascript" src="client_id.js"></script>
@@ -90,7 +89,6 @@ gapi.analytics.ready(function() {
 
   gapi.analytics.auth.on('success', function(response) {
     viewSelector.execute();
-    viewSelectorSecond.execute();
   });
 
   viewSelector.on('change', function(ids) {
