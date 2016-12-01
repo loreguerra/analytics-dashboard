@@ -2,6 +2,16 @@
 <html>
 <head>
   <title>Embed API Demo</title>
+
+  <style>
+  body{
+    font-family: sans-serif;
+  }
+  #sessionsBarFirst{
+    color: #000;
+  }
+  </style>
+
 </head>
 <body>
 
@@ -14,9 +24,8 @@
 
 
 <section id="sessionsBarFirst"></section>
-<section id="view-selector"></section>
-
 <section id="sessionsBarSecond"></section>
+<section id="view-selector"></section>
 
 <!-- Step 2: Load the library. -->
 <script type="text/javascript" src="client_id.js"></script>
@@ -54,17 +63,17 @@ gapi.analytics.ready(function() {
   // Step 5: Create the sessionsBarFirst chart.
 
   var sessionsBarFirst = new gapi.analytics.googleCharts.DataChart({
-    reportType: 'ga',
     query: {
-      'dimensions': 'ga:date',
-      'metrics': 'ga:sessions',
-      'start-date': '2016-11-01',
-      'end-date': '2016-11-30',
-    },
-    chart: {
-      type: 'COLUMN',
-      container: 'sessionsBarFirst'
-    }
+       'dimensions': 'ga:deviceCategory',
+       'metrics': 'ga:sessions, ga:users, ga:pageviews, ga:pageviewsPerSession'
+     },
+     chart: {
+       type: 'TABLE',
+       container: 'sessionsBarFirst',
+       options: {
+         width: '100%'
+       }
+     }
   });
 
   var sessionsBarSecond = new gapi.analytics.googleCharts.DataChart({
