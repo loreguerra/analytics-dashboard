@@ -1,15 +1,22 @@
 body {
   font-family: sans-serif; }
 
+h2 {
+  margin-bottom: 40px; }
+
 #view-selector {
   margin-bottom: 60px; }
   #view-selector table {
     display: inline; }
 
-#charts {
+#container {
   padding: 40px; }
 
 #summary-table {
   margin-bottom: 40px; }
+
+.well {
+  margin-bottom: 80px;
+  width: 70%; }
 
 /*# sourceMappingURL=style.css.map */

@@ -2,6 +2,9 @@ body{
   font-family: sans-serif;
 }
 
+h2{
+    margin-bottom: 40px;
+}
 
 #view-selector{
     margin-bottom: 60px;
@@ -10,10 +13,15 @@ body{
     }
 }
 
-#charts{
+#container{
     padding: 40px;
 }
 
 #summary-table{
     margin-bottom: 40px;
+}
+
+.well{
+    margin-bottom: 80px;
+    width: 70%;
 }
