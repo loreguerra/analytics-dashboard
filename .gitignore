@@ -1,2 +1,7 @@
+### credential files ###
 client_id.json
 client_id.js
+
+### Sass ###
+.sass-cache/
+*.css.map
