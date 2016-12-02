@@ -55,8 +55,9 @@ gapi.analytics.ready(function() {
 
   var sessionsBarFirst = new gapi.analytics.googleCharts.DataChart({
     query: {
-       'dimensions': 'ga:deviceCategory',
-       'metrics': 'ga:sessions, ga:users, ga:pageviews, ga:pageviewsPerSession, ga:avgSessionDuration, ga:bounceRate, ga:newUsers'
+       'dimensions': 'ga:month',
+       'metrics': 'ga:sessions, ga:users, ga:pageviews, ga:pageviewsPerSession, ga:avgSessionDuration, ga:bounceRate, ga:newUsers',
+       'start-date': '2016-11-01',
      },
      chart: {
        type: 'TABLE',
@@ -83,7 +84,7 @@ gapi.analytics.ready(function() {
 
   sessionsBarFirst.on('success', function(result) {
     // Print the total pageview count to the console.
-    document.getElementById("sessions-count-first").innerHTML = result.response.totalsForAllResults['ga:sessions'];
+    document.getElementById("sessions-count-first").innerHTML = result.response.totalsForAllResults['ga:bounceRate'];
   });
 
   // Step 6: Hook up the components to work together.
