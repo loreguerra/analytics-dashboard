@@ -26,6 +26,7 @@
     <section id="summary-table"></section>
     <section id="sessions-column"></section>
     <section id="referral-table"></section>
+    <section id="pageviews-table"></section>
 
     <div class="well">
         <h4>Summary:</h4>
@@ -101,7 +102,7 @@ gapi.analytics.ready(function() {
   var referralTable = new gapi.analytics.googleCharts.DataChart({
     query: {
        'dimensions': 'ga:sourceMedium, ga:campaign',
-       'metrics': 'ga:sessions',
+       'metrics': 'ga:sessions, ga:sessionDuration',
        'start-date': '2016-11-01',
        'end-date': '2016-11-30',
        'max-results': '15',
@@ -110,6 +111,24 @@ gapi.analytics.ready(function() {
      chart: {
        type: 'TABLE',
        container: 'referral-table',
+       options: {
+         width: '100%'
+       }
+     }
+  });
+
+  var pageviewsTable = new gapi.analytics.googleCharts.DataChart({
+    query: {
+       'dimensions': 'ga:landingPagePath, ga:fullReferrer',
+       'metrics': 'ga:entrances',
+       'start-date': '2016-11-01',
+       'end-date': '2016-11-30',
+       'max-results': '15',
+       'sort': '-ga:entrances'
+     },
+     chart: {
+       type: 'TABLE',
+       container: 'pageviews-table',
        options: {
          width: '100%'
        }
@@ -137,6 +156,7 @@ gapi.analytics.ready(function() {
     summaryTable.set(newIds).execute();
     sessionsColumnFirst.set(newIds).execute();
     referralTable.set(newIds).execute();
+    pageviewsTable.set(newIds).execute();
   });
 });
 </script>
