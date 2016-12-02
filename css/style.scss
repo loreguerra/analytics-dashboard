@@ -4,7 +4,7 @@ $global-margin-lg: 60px;
 $global-margin-xxl: 80px;
 
 body{
-  font-family: sans-serif;
+  font-family: 'Helvetica', 'Arial', sans-serif;
 }
 
 h2{
@@ -19,15 +19,15 @@ h2{
 }
 
 #container{
-    padding: $global-margin;
+    padding: $global-margin-lg;
 }
 
 #summary-table{
-    margin-bottom: $global-margin;
+    margin-bottom: $global-margin-lg;
 }
 
-#sessionsColumnFirst{
-    margin-bottom: $global-margin;
+#sessions-column{
+    margin-bottom: $global-margin-lg;
 }
 
 .well{
