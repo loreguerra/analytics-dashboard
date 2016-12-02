@@ -1,27 +1,36 @@
+// variables //
+$global-margin: 40px;
+$global-margin-lg: 60px;
+$global-margin-xxl: 80px;
+
 body{
   font-family: sans-serif;
 }
 
 h2{
-    margin-bottom: 60px;
+    margin-bottom: $global-margin-lg;
 }
 
 #view-selector{
-    margin-bottom: 60px;
+    margin-bottom: $global-margin-lg;
     table{
         display: inline;
     }
 }
 
 #container{
-    padding: 40px;
+    padding: $global-margin;
 }
 
 #summary-table{
-    margin-bottom: 40px;
+    margin-bottom: $global-margin;
+}
+
+#sessionsColumnFirst{
+    margin-bottom: $global-margin;
 }
 
 .well{
-    margin-top: 80px;
+    margin-top: $global-margin-xxl;
     width: 70%;
 }
