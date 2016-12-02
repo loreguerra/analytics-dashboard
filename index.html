@@ -56,8 +56,9 @@ gapi.analytics.ready(function() {
   var sessionsBarFirst = new gapi.analytics.googleCharts.DataChart({
     query: {
        'dimensions': 'ga:month',
-       'metrics': 'ga:sessions, ga:users, ga:pageviews, ga:pageviewsPerSession, ga:avgSessionDuration, ga:bounceRate, ga:newUsers',
-       'start-date': '2016-11-01',
+       'metrics': 'ga:sessions, ga:users, ga:newUsers, ga:pageviews, ga:pageviewsPerSession, ga:avgSessionDuration, ga:bounceRate',
+       'start-date': '2016-10-01',
+       'end-date': '2016-11-30'
      },
      chart: {
        type: 'TABLE',
@@ -68,24 +69,26 @@ gapi.analytics.ready(function() {
      }
   });
 
-  var sessionsBarSecond = new gapi.analytics.googleCharts.DataChart({
-    reportType: 'ga',
-    query: {
-      'dimensions': 'ga:date',
-      'metrics': 'ga:sessions',
-      'start-date': '2016-10-01',
-      'end-date': '2016-10-31',
-    },
-    chart: {
-      type: 'COLUMN',
-      container: 'sessionsBarSecond'
-    }
-  });
+  // var sessionsBarSecond = new gapi.analytics.googleCharts.DataChart({
+  //     query: {
+  //        'dimensions': 'ga:month',
+  //        'metrics': 'ga:sessions, ga:users, ga:newUsers, ga:pageviews, ga:pageviewsPerSession, ga:avgSessionDuration, ga:bounceRate',
+  //        'start-date': '2016-10-01',
+  //        'end-date': '2016-10-31'
+  //      },
+  //      chart: {
+  //        type: 'TABLE',
+  //        container: 'sessionsBarSecond',
+  //        options: {
+  //          width: '100%'
+  //        }
+  //      }
+  // });
 
-  sessionsBarFirst.on('success', function(result) {
-    // Print the total pageview count to the console.
-    document.getElementById("sessions-count-first").innerHTML = result.response.totalsForAllResults['ga:bounceRate'];
-  });
+  // sessionsBarFirst.on('success', function(result) {
+  //   // Print the total pageview count to the console.
+  //   document.getElementById("sessions-count-first").innerHTML = result.response.totalsForAllResults['ga:bounceRate'];
+  // });
 
   // Step 6: Hook up the components to work together.
 
