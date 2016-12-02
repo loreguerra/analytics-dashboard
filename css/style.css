@@ -2,11 +2,14 @@ body {
   font-family: sans-serif; }
 
 #view-selector {
-  margin-top: 20px; }
+  margin-bottom: 60px; }
   #view-selector table {
     display: inline; }
 
 #charts {
   padding: 40px; }
+
+#summary-table {
+  margin-bottom: 40px; }
 
 /*# sourceMappingURL=style.css.map */

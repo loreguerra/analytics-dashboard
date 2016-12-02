@@ -19,8 +19,9 @@
 
 
 <div id="charts">
-    <section id="summary-table"></section>
     <section id="view-selector"></section>
+    <section id="summary-table"></section>
+    <section id="sessions-column"></section>
 </div>
 
 
@@ -71,21 +72,21 @@ gapi.analytics.ready(function() {
      }
   });
 
-  // var sessionsBarSecond = new gapi.analytics.googleCharts.DataChart({
-  //     query: {
-  //        'dimensions': 'ga:month',
-  //        'metrics': 'ga:sessions, ga:users, ga:newUsers, ga:pageviews, ga:pageviewsPerSession, ga:avgSessionDuration, ga:bounceRate',
-  //        'start-date': '2016-10-01',
-  //        'end-date': '2016-10-31'
-  //      },
-  //      chart: {
-  //        type: 'TABLE',
-  //        container: 'sessionsBarSecond',
-  //        options: {
-  //          width: '100%'
-  //        }
-  //      }
-  // });
+  var sessionsColumnFirst = new gapi.analytics.googleCharts.DataChart({
+    query: {
+       'dimensions': 'ga:date',
+       'metrics': 'ga:sessions',
+       'start-date': '2016-10-01',
+       'end-date': '2016-11-30'
+     },
+     chart: {
+       type: 'COLUMN',
+       container: 'sessions-column',
+       options: {
+         width: '100%'
+       }
+     }
+  });
 
   // sessionsBarFirst.on('success', function(result) {
   //   // Print the total pageview count to the console.
@@ -105,6 +106,7 @@ gapi.analytics.ready(function() {
       }
     }
     summaryTable.set(newIds).execute();
+    sessionsColumnFirst.set(newIds).execute();
   });
 });
 </script>
