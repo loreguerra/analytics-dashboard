@@ -2,8 +2,10 @@
 <html>
 <head>
   <title>CID/Felix Analytics Dashboard</title>
+  <link rel="stylesheet" type="text/css" href="css/style.css">
+  
 </head>
-<link rel="stylesheet" type="text/css" href="css/style.css">
+
 <body>
 
 <!-- Step 1: Create the containing elements. -->
@@ -11,11 +13,10 @@
 <section id="auth-button"></section>
 
 <!-- Displaying counts -->
-<p id="sessions-count-first"></p>
+<!-- <p id="sessions-count-first"></p> -->
 
 
-<section id="sessionsBarFirst"></section>
-<section id="sessionsBarSecond"></section>
+<section id="summary-table"></section>
 <section id="view-selector"></section>
 
 <!-- Step 2: Load the library. -->
@@ -47,13 +48,9 @@ gapi.analytics.ready(function() {
     container: 'view-selector'
   });
 
-  var viewSelectorSecond = new gapi.analytics.ViewSelector({
-    container: 'view-selector-second'
-  });
-
   // Step 5: Create the sessionsBarFirst chart.
 
-  var sessionsBarFirst = new gapi.analytics.googleCharts.DataChart({
+  var summaryTable = new gapi.analytics.googleCharts.DataChart({
     query: {
        'dimensions': 'ga:month',
        'metrics': 'ga:sessions, ga:users, ga:newUsers, ga:pageviews, ga:pageviewsPerSession, ga:avgSessionDuration, ga:bounceRate',
@@ -62,7 +59,7 @@ gapi.analytics.ready(function() {
      },
      chart: {
        type: 'TABLE',
-       container: 'sessionsBarFirst',
+       container: 'summary-table',
        options: {
          width: '100%'
        }
@@ -102,8 +99,7 @@ gapi.analytics.ready(function() {
         ids: ids
       }
     }
-    sessionsBarFirst.set(newIds).execute();
-    sessionsBarSecond.set(newIds).execute();
+    summaryTable.set(newIds).execute();
   });
 });
 </script>
