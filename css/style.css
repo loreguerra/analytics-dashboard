@@ -1,4 +1,9 @@
 body {
   font-family: sans-serif; }
 
+#view-selector {
+  margin-top: 20px; }
+  #view-selector table {
+    display: inline; }
+
 /*# sourceMappingURL=style.css.map */
